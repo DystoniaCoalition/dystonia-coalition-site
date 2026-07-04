@@ -1,0 +1,1 @@
+Reference only — not used at runtime. Documents header/footer markup shared across pages.

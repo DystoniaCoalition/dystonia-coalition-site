@@ -1,0 +1,447 @@
+/* ============================================================
+   Dystonia Coalition — design tokens
+   Paper warmth + deep plum ink, one wave motif as the signature.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --paper: #F6F2EA;
+  --paper-dim: #EFE9DD;
+  --ink: #211A2E;
+  --ink-soft: #4B4258;
+  --plum: #4B3868;
+  --plum-deep: #302345;
+  --gold: #C98A2E;
+  --gold-soft: #E9C67E;
+  --line: #DCD3C2;
+  --white: #FFFDF9;
+
+  --display: 'Fraunces', serif;
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --max: 1120px;
+  --radius: 4px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width: 100%; display: block; }
+a{ color: var(--plum); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Wave motif (signature element) ---------- */
+.wave-divider{
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin: 0 auto;
+}
+.wave-divider path{ stroke: var(--gold); stroke-width: 2.5; fill: none; }
+
+/* ---------- Header / nav ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.brand{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand-mark{
+  height: 44px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.brand-name{
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.32rem;
+  letter-spacing: -0.01em;
+  color: var(--plum-deep);
+}
+.brand-tag{
+  display: none;
+}
+
+nav.primary-nav{ display: flex; }
+nav.primary-nav ul{
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+nav.primary-nav a{
+  display: inline-block;
+  padding: 9px 13px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+}
+nav.primary-nav a:hover{ background: var(--paper-dim); color: var(--ink); }
+nav.primary-nav a[aria-current="page"]{ color: var(--plum-deep); font-weight: 700; }
+
+.nav-toggle{
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (max-width: 860px){
+  nav.primary-nav{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 12px 18px;
+  }
+  nav.primary-nav.open{ display: block; }
+  nav.primary-nav ul{ flex-direction: column; gap: 2px; }
+  .nav-toggle{ display: inline-block; }
+}
+
+/* ---------- Buttons / pills ---------- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: 1.5px solid transparent;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn-primary{ background: var(--plum-deep); color: var(--white); }
+.btn-primary:hover{ background: var(--plum); }
+.btn-ghost{ background: transparent; color: var(--plum-deep); border-color: var(--plum-deep); }
+.btn-ghost:hover{ background: var(--plum-deep); color: var(--white); }
+.btn-gold{ background: var(--gold); color: var(--plum-deep); }
+.btn-gold:hover{ transform: translateY(-1px); }
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 64px 0 40px;
+}
+.eyebrow{
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+.hero h1{
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.06;
+  font-weight: 600;
+  color: var(--plum-deep);
+  max-width: 15ch;
+  margin: 0 0 22px;
+}
+.hero p.lede{
+  font-size: 1.18rem;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0 0 30px;
+}
+.hero-actions{ display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---------- Page header (non-home pages) ---------- */
+.page-head{ padding: 46px 0 28px; border-bottom: 1px solid var(--line); }
+.page-head .eyebrow{ margin-bottom: 10px; }
+.page-head h1{
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  color: var(--plum-deep);
+  margin: 0 0 14px;
+  max-width: 22ch;
+}
+.page-head p.dek{
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ---------- Sections ---------- */
+section{ padding: 52px 0; }
+section.tight{ padding: 36px 0; }
+section.panel{ background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+section.deep{ background: var(--plum-deep); color: var(--paper); }
+section.deep .eyebrow{ color: var(--gold-soft); }
+section.deep h2{ color: var(--white); }
+section.deep p{ color: #D9D2E6; }
+
+h2.section-title{
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  color: var(--plum-deep);
+  margin: 0 0 8px;
+}
+p.section-dek{ color: var(--ink-soft); max-width: 62ch; margin: 0 0 32px; }
+
+/* ---------- Nav-card grid (home main topics) ---------- */
+.topic-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+.topic-card{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.topic-card:hover{ border-color: var(--gold); transform: translateY(-3px); }
+.topic-card .idx{
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+.topic-card h3{
+  font-family: var(--display);
+  font-size: 1.24rem;
+  margin: 0;
+  color: var(--plum-deep);
+}
+.topic-card p{ margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.topic-card .go{ margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--plum); }
+
+/* ---------- Generic content blocks ---------- */
+.prose{ max-width: 72ch; }
+.prose p{ margin: 0 0 18px; color: var(--ink-soft); }
+.prose h3{ font-family: var(--display); color: var(--plum-deep); font-size: 1.3rem; margin: 34px 0 12px; }
+.prose ul{ color: var(--ink-soft); padding-left: 22px; }
+.prose li{ margin-bottom: 8px; }
+
+.card-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.card h4{ font-family: var(--display); color: var(--plum-deep); margin: 0 0 8px; font-size: 1.1rem; }
+.card p{ margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.tag{
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--paper-dim);
+  color: var(--plum-deep);
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.tag.gold{ background: #F5E4BE; color: #7A551A; }
+
+/* ---------- Tables ---------- */
+table.data{
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 0.94rem;
+}
+table.data caption{ text-align: left; margin-bottom: 10px; color: var(--ink-soft); font-size: 0.9rem; }
+table.data th, table.data td{
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+table.data th{
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--plum-deep);
+  background: var(--paper-dim);
+}
+table.data tr:last-child td{ border-bottom: none; }
+
+/* ---------- Tier list (team page) ---------- */
+.tier{
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 22px;
+  margin-bottom: 28px;
+}
+.tier h3{ font-family: var(--display); color: var(--plum-deep); margin: 0 0 6px; }
+.tier p{ margin: 0 0 6px; color: var(--ink-soft); }
+
+/* ---------- PAG logo grid (patients page) ---------- */
+.pag-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+.pag-tile{
+  aspect-ratio: 1.5;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 600;
+}
+.pag-tile:hover{ border-color: var(--gold); color: var(--plum-deep); }
+
+/* ---------- Forms ---------- */
+form.stack{ display: grid; gap: 16px; max-width: 560px; }
+form.stack label{ font-weight: 600; font-size: 0.92rem; display: block; margin-bottom: 6px; }
+form.stack input, form.stack select, form.stack textarea{
+  width: 100%;
+  font-family: var(--body);
+  font-size: 1rem;
+  padding: 11px 13px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+}
+form.stack textarea{ min-height: 120px; resize: vertical; }
+
+/* ---------- Search / filter bar (publications) ---------- */
+.filter-bar{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.filter-bar input, .filter-bar select{
+  font-family: var(--body);
+  padding: 10px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-size: 0.95rem;
+}
+.filter-bar input[type="search"]{ flex: 1; min-width: 200px; }
+
+.pub{
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pub:last-child{ border-bottom: none; }
+.pub .pyear{ font-family: var(--mono); color: var(--gold); font-size: 0.8rem; }
+.pub h4{ margin: 4px 0 4px; font-family: var(--display); font-size: 1.05rem; color: var(--plum-deep); }
+.pub p{ margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+.pub .highlight{ color: #7A551A; font-weight: 600; font-size: 0.82rem; }
+
+/* ---------- Footer ---------- */
+footer.site-footer{
+  background: var(--plum-deep);
+  color: #D9D2E6;
+  padding: 46px 0 30px;
+  margin-top: 40px;
+}
+footer.site-footer .foot-grid{
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+footer.site-footer h5{
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: var(--gold-soft);
+  margin: 0 0 14px;
+}
+footer.site-footer ul{ list-style: none; margin: 0; padding: 0; }
+footer.site-footer li{ margin-bottom: 9px; }
+footer.site-footer a{ color: #D9D2E6; text-decoration: none; font-size: 0.92rem; }
+footer.site-footer a:hover{ color: var(--white); text-decoration: underline; }
+footer.site-footer .foot-brand{ color: var(--white); font-family: var(--display); font-size: 1.2rem; margin-bottom: 10px; }
+footer.site-footer .foot-note{
+  font-size: 0.85rem;
+  color: #B6AECB;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 20px;
+  max-width: 70ch;
+}
+@media (max-width: 760px){
+  footer.site-footer .foot-grid{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Domain notice banner ---------- */
+.notice{
+  background: #F5E4BE;
+  color: #5C3D0E;
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 8px 16px;
+}
+.notice a{ color: #5C3D0E; font-weight: 700; }
